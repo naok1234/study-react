@@ -1,8 +1,8 @@
 
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from './Fotter.module.css'
 
-export function Footer() {
+export function Fotter() {
   return(
       <footer className={styles.footer}>
         <a
