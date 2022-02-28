@@ -10,6 +10,8 @@ export default function Home() {
   const [count,setCount] = useState(1);
   const [isShow,setIsShow] = useState(true);
   const [text,setText] = useState("");
+  const [array,setArray] = useState([]);
+
 
   const hendleClick = useCallback(() => {
     setCount((count) => count + 1);
@@ -22,6 +24,13 @@ export default function Home() {
 
   const handleText = useCallback((e) => {
     setText(e.target.value);
+  },[text]);
+
+  const hendleAdd = useCallback(() => {
+    setArray((array) => {
+      const prevarray = [...array,text];
+      return prevarray;
+    });
   },[text]);
 
   useEffect(() => {
@@ -47,9 +56,14 @@ export default function Home() {
         </button>
       </div>
       <input type="text" value={ text } onChange={handleText} />
-      <button>
+      <button onClick={hendleAdd}>
         追加
       </button>
+      <ul>
+        {array.map((item) => {
+          return <li key={item}>{item}</li>
+        })}
+      </ul>
       <Main title="index"/>
       <Fotter />
     </div>
